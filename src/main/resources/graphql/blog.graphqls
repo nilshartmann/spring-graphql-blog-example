@@ -1,0 +1,36 @@
+type Comment {
+    id: ID!
+    createdAt: String!
+    comment: String!
+}
+
+type User {
+    id: ID!
+    username: String!
+    fullname: String!
+}
+
+type Post {
+    id: ID!
+    title: String!
+    excerpt(maxLength: Int! = 10): String!
+    body: String!
+    createdAt: String!
+    writtenBy: User!
+
+    comments: [Comment!]!
+}
+type Query {
+    posts(size: Int, page: Int): [Post!]!
+    post: Post
+}
+
+input NewCommentInput {
+    userId: ID!
+    postId: ID!
+    comment: String!
+}
+
+type Mutation {
+    newComment(input: NewCommentInput!): Comment!
+}
