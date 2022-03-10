@@ -14,6 +14,10 @@ public class BlogService {
     this.postRepository = postRepository;
   }
 
+  public Post addPost(String userId, String title, String body) {
+    return null;
+  }
+
   @Transactional
   public Comment addComment(String userId, String postId, String comment) {
     User user = userRepository.findById(userId).orElseThrow();

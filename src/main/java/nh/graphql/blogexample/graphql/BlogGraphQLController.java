@@ -18,6 +18,7 @@ import java.util.Optional;
 @Controller
 public class BlogGraphQLController {
 
+
   private PostRepository postRepository;
   private BlogService blogService;
 
