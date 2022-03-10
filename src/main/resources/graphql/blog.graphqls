@@ -1,8 +1,4 @@
-type Comment {
-    id: ID!
-    createdAt: String!
-    comment: String!
-}
+# Blog Example GraphQL Schema
 
 type User {
     id: ID!
@@ -10,19 +6,22 @@ type User {
     fullname: String!
 }
 
+type Comment {
+    id: ID!
+    createdAt: String!
+    comment: String!
+}
+
 type Post {
     id: ID!
     title: String!
-    excerpt(maxLength: Int! = 10): String!
     body: String!
     createdAt: String!
-    writtenBy: User!
 
+    excerpt(maxLength: Int! = 10): String!
+
+    writtenBy: User!
     comments: [Comment!]!
-}
-type Query {
-    posts(size: Int, page: Int): [Post!]!
-    post: Post
 }
 
 input NewCommentInput {
@@ -33,4 +32,8 @@ input NewCommentInput {
 
 type Mutation {
     newComment(input: NewCommentInput!): Comment!
+}
+
+type Query {
+    posts: [Post!]!
 }
